@@ -14,7 +14,7 @@ public class Main {
         
         if (input.isEmpty()) return;
 
-        // Convert string to Linked List
+        // Convert string to Linked List [cite: 13]
         Node head = new Node(input.charAt(0));
         Node temp = head;
         for (int i = 1; i < input.length(); i++) {
@@ -22,14 +22,14 @@ public class Main {
             temp = temp.next;
         }
 
-        // Fast & Slow pointer to find middle
+        // Fast & Slow pointer to find middle [cite: 19]
         Node slow = head, fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
 
-        // Reverse second half
+        // Reverse second half [cite: 14, 20]
         Node prev = null;
         while (slow != null) {
             Node nextNode = slow.next;
@@ -38,7 +38,7 @@ public class Main {
             slow = nextNode;
         }
 
-        // Compare halves
+        // Compare halves [cite: 15]
         Node left = head, right = prev;
         boolean isPalindrome = true;
         while (right != null) {

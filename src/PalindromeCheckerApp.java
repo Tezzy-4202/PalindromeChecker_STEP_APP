@@ -1,35 +1,45 @@
-import java.util.Scanner;
+import java.util.*;
 
-public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter a long string for performance test: ");
-        String input = scanner.nextLine();
+// Strategy Interface [cite: 86]
+interface PalindromeStrategy {
+    boolean isPalindrome(String s);
+}
 
-        // Test String Reverse [cite: 105]
-        long start = System.nanoTime(); [cite: 109]
-        isPalindromeReverse(input);
-        long end = System.nanoTime();
-        System.out.println("String Reverse Time: " + (end - start) + " ns"); [cite: 107]
-
-        // Test Two-Pointer
-        start = System.nanoTime();
-        isPalindromeTwoPointer(input);
-        end = System.nanoTime();
-        System.out.println("Two-Pointer Time: " + (end - start) + " ns");
-        
-        scanner.close();
+// Stack Strategy implementation [cite: 87]
+class StackStrategy implements PalindromeStrategy {
+    public boolean isPalindrome(String s) {
+        Stack<Character> stack = new Stack<>();
+        for (char c : s.toCharArray()) stack.push(c);
+        StringBuilder rev = new StringBuilder();
+        while (!stack.isEmpty()) rev.append(stack.pop());
+        return s.equalsIgnoreCase(rev.toString());
     }
+}
 
-    public static boolean isPalindromeReverse(String s) {
-        return new StringBuilder(s).reverse().toString().equalsIgnoreCase(s);
-    }
-
-    public static boolean isPalindromeTwoPointer(String s) {
+// Two-Pointer Strategy implementation [cite: 87]
+class TwoPointerStrategy implements PalindromeStrategy {
+    public boolean isPalindrome(String s) {
         int i = 0, j = s.length() - 1;
         while (i < j) {
             if (s.charAt(i++) != s.charAt(j--)) return false;
         }
         return true;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter string: ");
+        String input = scanner.nextLine();
+
+        // Dynamically injecting strategy [cite: 88]
+        PalindromeStrategy strategy = new TwoPointerStrategy(); 
+        
+        System.out.println("Using Two-Pointer Strategy: " + strategy.isPalindrome(input));
+        
+        strategy = new StackStrategy();
+        System.out.println("Using Stack Strategy: " + strategy.isPalindrome(input));
+        scanner.close();
     }
 }

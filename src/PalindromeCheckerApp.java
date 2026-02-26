@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
+    public static void PalindromeCheckerApp(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter a long string for performance test: ");
         String input = scanner.nextLine();

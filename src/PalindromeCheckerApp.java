@@ -27,7 +27,7 @@ class TwoPointerStrategy implements PalindromeStrategy {
     }
 }
 
-public class Main {
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter string: ");

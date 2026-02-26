@@ -1,4 +1,4 @@
-public class Main {
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
         String hardcoded = "madam";
         System.out.println("Checking hardcoded word: " + hardcoded);

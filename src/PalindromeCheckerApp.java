@@ -12,7 +12,7 @@ class PalindromeService {
     }
 }
 
-public class Main {
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         PalindromeService service = new PalindromeService(); // [cite: 69]
